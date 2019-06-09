@@ -1,13 +1,9 @@
 <template>
   <div>
-
-    <v-btn to="/generator" color="success" outline round large>Create New Project</v-btn>
-
+    <v-btn to="/reverseengineeringform" color="success" outline round large>Create New Project</v-btn>
   </div>
 </template>
 
 <script>
-
-  export default {
-  }
+export default {};
 </script>

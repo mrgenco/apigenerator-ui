@@ -4,9 +4,9 @@
          <v-toolbar card color="red lighten-1" dark>
             <v-toolbar-title> Generated EndPoints </v-toolbar-title>
          </v-toolbar>
-      
 
-         <v-card-text>    
+
+         <v-card-text>
             <v-list v-if="urls">
               <template v-for="(item, index) in urls._links">
                 <v-list-tile
@@ -16,13 +16,11 @@
                   <v-list-tile-content>
                     <v-list-tile-title>{{ item.href }}</v-list-tile-title>
                   </v-list-tile-content>
-                  <v-btn round color="success" @click="redirectServiceUrl(item.href)"> 
+                  <v-btn round color="success" @click="redirectServiceUrl(item.href)">
                     Discover
                     <v-icon dark>arrow_forward</v-icon>
                   </v-btn>
               </v-list-tile>
-              
-              
               </template>
 
             </v-list>
@@ -38,88 +36,82 @@
                   {{error.message}}
                 </li>
               </ul>
-              
-              </v-alert>        
+
+              </v-alert>
                <v-btn  to="/generator" color="red lighten-1">
                <v-icon dark left>arrow_back</v-icon>Back
-            </v-btn>  
+            </v-btn>
          </v-card-text>
-        
+
       </v-card>
 
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
-
   data() {
     return {
-      urls : [],
-      errors : [],
-      loading : false
-    }
+      urls: [],
+      errors: [],
+      loading: false
+    };
   },
   created() {
-     this.loading = true;
-     axios.get("http://localhost:8081/")
-           .then(response => {
-             this.urls = response.data;
-             this.loading = true;
-           })
-           .catch(e => {
-             this.errors.push(e);
-             this.loading = false;
-           });
+    this.loading = true;
+    axios
+      .get("http://localhost:8081/")
+      .then(response => {
+        this.urls = response.data;
+        this.loading = true;
+      })
+      .catch(e => {
+        this.errors.push(e);
+        this.loading = false;
+      });
   },
   methods: {
-    redirectServiceUrl(url){
-      let serviceUrl = url.substr(0, url.indexOf('{')); 
-    //  window.location.replace(serviceUrl);
-      window.open(serviceUrl, '_blank').focus();
+    redirectServiceUrl(url) {
+      let serviceUrl = url.substr(0, url.indexOf("{"));
+      //  window.location.replace(serviceUrl);
+      window.open(serviceUrl, "_blank").focus();
     }
   }
-
-}
+};
 </script>
 
 <style scoped>
-
-#header{
-
+#header {
   background-color: black;
   color: black;
-
 }
 h5 {
   color: black;
   font-size: 25px;
 }
 
-h2{
- 
+h2 {
   padding: 5px;
   font-size: 20px;
-    text-align: center;
-    margin: auto;
+  text-align: center;
+  margin: auto;
 }
 
-h3{
+h3 {
   padding: 5px;
   font-size: 15px;
-  background-color:whitesmoke;
+  background-color: whitesmoke;
   border-radius: 3px;
   color: #000;
   text-align: center;
   margin: auto;
 }
 
-.mrg-list{
+.mrg-list {
   width: 75%;
   margin: 0 auto;
   padding-top: 25px;
 }
-
 
 .loader {
   margin: auto;
