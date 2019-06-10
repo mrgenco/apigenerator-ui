@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <v-flex>
     <v-btn to="/reverseengineeringform" color="success" outline round large>Create New Project</v-btn>
-  </div>
+  </v-flex>
 </template>
 
 <script>

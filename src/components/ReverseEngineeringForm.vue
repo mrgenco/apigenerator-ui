@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-flex xs4>
     <v-alert
       v-if="errors && errors.length"
       :value="true"
@@ -12,14 +12,11 @@
       </ul>
     </v-alert>
     <v-card>
-      <v-toolbar card color="red lighten-1">
-        <v-toolbar-title>Rest API Generation Form</v-toolbar-title>
-      </v-toolbar>
       <!-- FORM INPUTS -->
       <v-card-text>
         <v-form ref="form" v-model="valid" lazy-validation>
           <v-layout wrap>
-            <v-flex xs12 sm6 md6>
+            <v-flex xs12>
               <v-text-field
                 v-model="reverseEngineeringRequest.projectName"
                 label="Project Name"
@@ -28,27 +25,32 @@
               ></v-text-field>
             </v-flex>
             <v-flex xs12>
-              <v-text-field
+              <v-textarea
                 v-model="reverseEngineeringRequest.url"
                 label="Data Source Url"
                 required
                 hint="Ex : jdbc:mysql://localhost:3306/springbootblog?useSSL=false"
+              ></v-textarea>
+            </v-flex>
+
+            <v-flex xs12>
+              <v-text-field
+                v-model="reverseEngineeringRequest.username"
+                label="User Name"
+                hint="Database Username"
+                required
               ></v-text-field>
             </v-flex>
-            <v-text-field
-              v-model="reverseEngineeringRequest.username"
-              label="User Name"
-              hint="Database Username"
-              required
-            ></v-text-field>
-            <v-text-field
-              v-model="reverseEngineeringRequest.password"
-              hint="Database Password"
-              :append-icon="showPassword ? 'visibility_off' : 'visibility'"
-              :type="showPassword? 'text' : 'password'"
-              @click:append="showPassword = !showPassword"
-              label="Password"
-            ></v-text-field>
+            <v-flex xs12>
+              <v-text-field
+                v-model="reverseEngineeringRequest.password"
+                hint="Database Password"
+                :append-icon="showPassword ? 'visibility_off' : 'visibility'"
+                :type="showPassword? 'text' : 'password'"
+                @click:append="showPassword = !showPassword"
+                label="Password"
+              ></v-text-field>
+            </v-flex>
           </v-layout>
         </v-form>
       </v-card-text>
@@ -60,14 +62,14 @@
         <v-btn block :loading="loadingEntities" @click="getEntities" color="success">Show Entities</v-btn>
 
         <v-btn outline @click="clear" color="error">
-          <v-icon color="pink">clear</v-icon>CLEAR
+          <v-icon color="pink">clear</v-icon>CLEAR INPUTS
         </v-btn>
       </v-card-actions>
       <!-- FORM ACTIONS ENDS -->
     </v-card>
 
     <EntityModelsAndFilters v-if="data.length > 0" :entities="data"></EntityModelsAndFilters>
-  </div>
+  </v-flex>
 </template>
 
 <script>

@@ -6,36 +6,32 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="mt-1">
-        <v-btn  flat to="/about">ABOUT</v-btn>
+        <v-btn flat to="/about">ABOUT</v-btn>
       </v-toolbar-items>
       <v-toolbar-items class="mt-1">
-        <v-btn  flat to="/">HOME</v-btn>
+        <v-btn flat to="/">HOME</v-btn>
       </v-toolbar-items>
-     </v-toolbar>
-    
+    </v-toolbar>
 
-    <v-content >
-      <v-container fluid fill-height>
-        <v-layout align-center justify-center>
-          <v-flex md6>
-            <transition name="component-fade" mode="out-in">
+    <v-content>
+      <v-container fluid grid-list-xl>
+        <v-layout row justify-center align-center fill-height>
+          <transition name="component-fade" mode="out-in">
             <router-view></router-view>
-            </transition>
-          </v-flex>
+          </transition>
         </v-layout>
-      </v-container>      
+      </v-container>
     </v-content>
   </v-app>
 </template>
 
 <script>
-
 export default {
-  name: 'App',
-  data () {
+  name: "App",
+  data() {
     return {
       //
-    }
+    };
   }
-}
+};
 </script>
